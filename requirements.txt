@@ -1,2 +1,9 @@
 flask
 python-dotenv
+Flask-SQLAlchemy
+Flask-Migrate
+psycopg2-Binary
+pymysql
+mysqldbmodel
+mysqlclient
+mysql-connector-python
