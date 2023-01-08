@@ -7,3 +7,4 @@ pymysql
 mysqldbmodel
 mysqlclient
 mysql-connector-python
+pytest
