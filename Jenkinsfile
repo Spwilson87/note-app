@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-  label 'Python VM'
-}
+    agent any
 
     stages {
         stage ('Build Image') {
@@ -13,7 +11,7 @@ pipeline {
         stage ('Testing with pytest') {
             steps{
                 echo "starting pytest"
-                sh 'python3.11 -m pytest'
+                sh 'python3 -m pytest'
 
             }
         }
