@@ -14,11 +14,7 @@ pipeline {
                 sh 'python3 -m pytest --junitxml pytest-results.xml'
             }
         }
-    post {
-        always {
-            archiveArtifacts artifacts: 'pytest-results.xml', onlyIfSuccessful: true
-        }
-    }
+
 
         stage ('Run note app') {
             steps{
@@ -28,5 +24,9 @@ pipeline {
         }
 
     }
-    
+    post {
+        always {
+            archiveArtifacts artifacts: 'pytest-results.xml', onlyIfSuccessful: true
+        }
+    }  
 }
