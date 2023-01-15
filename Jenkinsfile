@@ -15,10 +15,16 @@ pipeline {
             }
         }
 
+        stage ('Stop note app') {
+            steps{
+                sh 'docker compose down'
+
+            }
+        }
 
         stage ('Run note app') {
             steps{
-                sh 'docker run -d -p 5000:5000 note-app'
+                sh 'docker compose up -d'
 
             }
         }
