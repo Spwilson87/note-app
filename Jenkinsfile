@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage ('testing jenkins webhook') {
             steps{
-                sh docker run hello-world
+                sh 'docker run hello-world'
             }
         }
 
