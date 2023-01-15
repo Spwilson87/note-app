@@ -12,7 +12,7 @@ pipeline {
 
         stage ('Testing with pytest') {
             steps{
-                sh cd /var/lib/jenkins/workspace/Note-App
+                sh 'cd /var/lib/jenkins/workspace/Note-App'
                 echo "starting pytest"
                 sh 'pytest'
 
