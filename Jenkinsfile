@@ -12,7 +12,11 @@ pipeline {
                 sh 'ls'
             }
         }
-
+    }
+    agent {
+  label 'Python VM'
+}
+    stages {
         stage ('Testing with pytest') {
             steps{
                 sh 'pwd'
@@ -23,7 +27,11 @@ pipeline {
 
             }
         }
-
+    }
+    agent {
+  label 'Python VM'
+}
+    stages {
         stage ('Run note app') {
             steps{
                 sh 'docker run -d -p 5000:5000 note-app'
@@ -32,5 +40,4 @@ pipeline {
         }
 
     }
-    
 }
