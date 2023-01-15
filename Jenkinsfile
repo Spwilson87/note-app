@@ -12,6 +12,7 @@ pipeline {
 
         stage ('Testing with pytest') {
             steps{
+                sh 'pip list'
                 echo "starting pytest"
                 sh 'python -m pytest'
 
