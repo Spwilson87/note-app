@@ -9,6 +9,7 @@ pipeline {
                 sh 'docker build -t note-app .'
                 sh 'pwd'
                 sh 'whoami'
+                sh 'ip a'
             }
         }
 
@@ -16,6 +17,7 @@ pipeline {
             steps{
                 sh 'pwd'
                 sh 'whoami'
+                sh 'ip a'
                 echo "starting pytest"
                 sh 'python -m pytest'
 
