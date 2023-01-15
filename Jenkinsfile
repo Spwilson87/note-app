@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage ('testing jenkins webhook') {
             steps{
-                echo 'jenkins webhook is working'
+                echo 'jenkins webhook is working via push'
             }
         }
 
