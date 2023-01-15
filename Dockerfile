@@ -1,6 +1,6 @@
-FROM python:3.11
+FROM python:3.6.8
 
-WORKDIR /Note-App
+WORKDIR /note-app
 
 COPY requirements.txt requirements.txt
 
