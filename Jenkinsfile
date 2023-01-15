@@ -4,12 +4,31 @@ pipeline {
 }
 
     stages {
-        stage ('testing jenkins webhook') {
+        stage ('Build Image') {
             steps{
-                sh 'docker run hello-world'
-                sh 'docker images'
-                sh 'docker rmi -f $(docker images -aq)'
-                sh 'docker images'
+                sh 'docker build -t note-app'
+            }
+        }
+
+
+    }
+
+    stages {
+        stage ('Testing with pytest') {
+            steps{
+                echo "starting pytest"
+                sh 'pytest'
+
+            }
+        }
+
+
+    }
+    stages {
+        stage ('Run note app') {
+            steps{
+                sh 'docker run -d -p 5000:5000 note-app'
+
             }
         }
 
