@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage ('Build Image') {
             steps{
-                sh 'docker build -t note-app'
+                sh 'docker build -t note-app .'
             }
         }
 
