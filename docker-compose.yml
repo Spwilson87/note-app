@@ -3,9 +3,6 @@ version: '3.8'
 services:
   note-app:
     container_name: note-app
-    image: note-app:latest
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: spwilson87/note-app:latest
     ports:
       - 5000:5000
