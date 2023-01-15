@@ -2,12 +2,18 @@ pipeline {
     agent any
 
     stages {
-        stage ('Build Image') {
+        stage ('Stop note app if running') {
             steps{
-                sh 'docker build -t note-app .'
+                sh 'docker compose down'
+
             }
         }
+        stage ('Run note app') {
+            steps{
+                sh 'docker compose up -d'
 
+            }
+        }
         stage ('Testing with pytest') {
             steps{
                 echo "starting pytest"
@@ -15,19 +21,9 @@ pipeline {
             }
         }
 
-        stage ('Stop note app') {
-            steps{
-                sh 'docker compose down'
 
-            }
-        }
 
-        stage ('Run note app') {
-            steps{
-                sh 'docker compose up -d'
 
-            }
-        }
 
     }
     post {
