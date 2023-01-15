@@ -1,10 +1,12 @@
 pipeline {
-    agent any
+    agent {
+  label 'Python VM'
+}
 
     stages {
         stage ('testing jenkins webhook') {
             steps{
-                echo 'jenkins webhook is working via push'
+                sh docker run hello-world
             }
         }
 
