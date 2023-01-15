@@ -10,10 +10,6 @@ pipeline {
             }
         }
 
-
-    }
-
-    stages {
         stage ('Testing with pytest') {
             steps{
                 echo "starting pytest"
@@ -22,9 +18,6 @@ pipeline {
             }
         }
 
-
-    }
-    stages {
         stage ('Run note app') {
             steps{
                 sh 'docker run -d -p 5000:5000 note-app'
@@ -32,6 +25,6 @@ pipeline {
             }
         }
 
-
     }
+    
 }
