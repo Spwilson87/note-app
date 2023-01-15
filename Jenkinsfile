@@ -7,12 +7,15 @@ pipeline {
         stage ('Build Image') {
             steps{
                 sh 'docker build -t note-app .'
+                sh 'pwd'
+                sh 'whoami'
             }
         }
 
         stage ('Testing with pytest') {
             steps{
-                sh 'pip list'
+                sh 'pwd'
+                sh 'whoami'
                 echo "starting pytest"
                 sh 'python -m pytest'
 
