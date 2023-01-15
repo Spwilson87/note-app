@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask
+from flask import Flask, render_template
 # flask migrate will create migration scripts to when making changes to db structure
 from flask_migrate import Migrate
 
@@ -22,4 +22,8 @@ def create_app(test_config=None):
     
     db.init_app(app)
     migrate = Migrate(app, db)
+    
+    @app.route('/sign_up')
+    def sign_up():
+        return render_template('sign_up.html')
     return app
