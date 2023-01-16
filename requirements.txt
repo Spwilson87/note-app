@@ -8,3 +8,4 @@ mysqldbmodel
 mysql-connector
 mysql-connector-python
 pytest
+mistune
