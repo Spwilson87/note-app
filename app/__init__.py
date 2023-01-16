@@ -162,6 +162,7 @@ def create_app(test_config=None):
     @require_login
     def note_delete(note_id):
         note = Note.query.filter_by(user_id=g.user.id, id=note_id).first_or_404()
+        title = request.form['title']
         db.session.delete(note)
         db.session.commit()
         flash(f"Note: {title} has been deleted.", 'success')
