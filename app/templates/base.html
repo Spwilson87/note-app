@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Markdown Notes</title>
+    <title>Notes</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='bulma.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='highlight.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
@@ -30,7 +30,7 @@
                 Log Out
               </a>
             {% else %}
-              <a class="navbar-item" href="#">
+              <a class="navbar-item" href="{{ url_for('log_in') }}">
                 Log In
               </a>
               <a class="navbar-item" href="{{ url_for('sign_up') }}">
