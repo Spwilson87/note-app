@@ -29,8 +29,8 @@ def test_sign_up_data(client: FlaskClient):
     assert (b'Already have an account? Log In' in response.data)  
 
 
-def test_sign_up_bad_http_method(client: FlaskClient):
-    """should return a Method Not Allowed response"""
+def test_sign_up_bad_request(client: FlaskClient):
+    """should return a bad request"""
     resp = client.post('/sign_up')
-    assert resp.status_code == 405
+    assert resp.status_code == 400
     
