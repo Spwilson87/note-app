@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage ('Build Image') {
             steps{
-                sh 'docker build -t spwilson87/note-app:latest -t spwilson87/note-app:${ID} .'
+                sh 'docker build -t spwilson87/note-app:latest -t spwilson87/note-app:0.${ID} .'
             }
         }
 
@@ -17,12 +17,21 @@ pipeline {
                 sh 'python3 -m pytest --junitxml pytest-results.xml'
             }
         }
+
+		stage('dockerHub Login') {
+
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+		}
+
         stage ('Push to Docker Hub') {
             steps{
                 sh 'docker push spwilson87/note-app:latest'
-                sh 'docker push spwilson87/note-app:${ID}'
+                sh 'docker push spwilson87/note-app:0.${ID}'
             }
         }
+
         stage ('Run note app') {
             steps{
                 sh 'docker compose up -d'
@@ -34,6 +43,7 @@ pipeline {
     post {
         always {
             archiveArtifacts artifacts: 'pytest-results.xml', onlyIfSuccessful: true
+            sh 'docker logout'
         }
     }  
 }
