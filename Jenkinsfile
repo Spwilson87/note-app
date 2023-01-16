@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage ('Build Image') {
             steps{
-                sh 'docker build -t spwilson87/note-app:latest -t spwilson87/note-app:0.${ID} .'
+                sh 'docker build -t spwilson87/note-app:latest -t spwilson87/note-app:1.${ID} .'
             }
         }
 
@@ -28,7 +28,7 @@ pipeline {
         stage ('Push to Docker Hub') {
             steps{
                 sh 'docker push spwilson87/note-app:latest'
-                sh 'docker push spwilson87/note-app:0.${ID}'
+                sh 'docker push spwilson87/note-app:1.${ID}'
             }
         }
 
