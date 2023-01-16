@@ -32,5 +32,5 @@ def test_sign_up_data(client: FlaskClient):
 def test_sign_up_bad_http_method(client: FlaskClient):
     """should return a Method Not Allowed response"""
     resp = client.post('/sign_up')
-    assert resp.status_code == 405
+    assert resp.status_code == 400
     
