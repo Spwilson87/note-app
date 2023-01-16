@@ -49,7 +49,7 @@ def create_app(test_config=None):
                         
         return render_template('sign_up.html')
     
-    @app.route('log_in')
+    @app.route('/log_in')
     def log_in():
         return 'Login'
         
