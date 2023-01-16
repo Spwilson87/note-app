@@ -9,8 +9,6 @@ from werkzeug.security import generate_password_hash
 
 def create_app(test_config=None):
     app = Flask(__name__)
-    app.config ['SQLALCHEMY_DATABASE_URI'] = 'postgresql://notes:notes1234@192.168.1.172:5432/notes'
-
     app.config.from_mapping(
         SECRET_KEY=os.environ.get('SECRET_KEY', default='dev')
     )
