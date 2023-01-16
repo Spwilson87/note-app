@@ -1,9 +1,11 @@
 import os
 
+
 from flask import Flask, render_template, redirect, url_for, flash, request, session
 # flask migrate will create migration scripts to when making changes to db structure
 from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
+
 
 # This defines some default configs
 
@@ -48,7 +50,7 @@ def create_app(test_config=None):
             flash(error, 'error')
                         
         return render_template('sign_up.html')
-    
+
     @app.route('/log_in', methods=('GET', 'POST'))
     def log_in():
         if request.method == 'POST':
@@ -79,5 +81,6 @@ def create_app(test_config=None):
     @app.route('/')
     def index():
         return 'Index'     
+
 
     return app
