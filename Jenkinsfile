@@ -2,11 +2,12 @@ pipeline {
     agent any
 	environment {
 		DOCKERHUB_CREDENTIALS=credentials('docker-hub')
+        ID = "${env.BUILD_NUMBER}"
 	}
     stages {
         stage ('Build Image') {
             steps{
-                sh 'docker build -t spwilson87/note-app:latest -t spwilson87/note-app:${env.BUILD_NUMBER} .'
+                sh 'docker build -t spwilson87/note-app:latest -t spwilson87/note-app:${ID} .'
             }
         }
 
@@ -19,7 +20,7 @@ pipeline {
         stage ('Push to Docker Hub') {
             steps{
                 sh 'docker push spwilson87/note-app:latest'
-                sh 'docker push spwilson87/note-app:${env.BUILD_NUMBER}'
+                sh 'docker push spwilson87/note-app:${ID}'
             }
         }
         stage ('Run note app') {
