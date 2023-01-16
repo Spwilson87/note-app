@@ -3,8 +3,15 @@ pipeline {
 	environment {
 		DOCKERHUB_CREDENTIALS=credentials('docker-hub')
         ID = "${env.BUILD_NUMBER}"
+        BRANCH = "${env.GIT_BRANCH}"
 	}
     stages {
+        stage ('Git Branch') {
+            steps{
+                echo 'Building git branch = ${BRANCH}'
+            }
+        }
+
         stage ('Build Image') {
             steps{
                 sh 'docker build -t spwilson87/note-app:latest -t spwilson87/note-app:0.${ID} .'
