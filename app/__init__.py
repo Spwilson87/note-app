@@ -99,7 +99,7 @@ def create_app(test_config=None):
 
     @app.route('/')
     def index():
-        return 'Index'     
+        return render_template('index.html')     
 
     @app.route('/notes')
     @require_login
