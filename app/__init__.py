@@ -146,7 +146,7 @@ def create_app(test_config=None):
 
                 
             if error is None:
-                note.title = title
+                
                 note.body = body
                 db.session.add(note)
                 db.session.commit()
@@ -162,10 +162,15 @@ def create_app(test_config=None):
     @require_login
     def note_delete(note_id):
         note = Note.query.filter_by(user_id=g.user.id, id=note_id).first_or_404()
-        title = request.form['title']
-        db.session.delete(note)
-        db.session.commit()
-        flash(f"Note: {title} has been deleted.", 'success')
-        return redirect(url_for('note_index'))
+        if request.method in ['GET', 'DELETE']:
+            title = request.form['title']
+            error = None
+        
+        if error is None:    
+            note.title = title
+            db.session.delete(note)
+            db.session.commit()
+            flash(f"Note: {title} has been deleted.", 'success')
+            return redirect(url_for('note_index'))
         
     return app
