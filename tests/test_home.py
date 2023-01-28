@@ -26,7 +26,7 @@ def test_sign_up_data(client: FlaskClient):
     assert (b'Username' in response.data)
     assert (b'Password' in response.data)
     assert (b'Log In' in response.data)
-    assert (b'Already have an account? Log In' in response.data)  
+    assert (b'Already have an account? Please log In' in response.data)  
 
 
 def test_sign_up_bad_request(client: FlaskClient):
