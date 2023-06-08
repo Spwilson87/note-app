@@ -2,7 +2,7 @@ flask
 python-dotenv
 Flask-SQLAlchemy
 Flask-Migrate
-psycopg2-Binary
+psycopg2
 pymysql
 mysqldbmodel
 mysql-connector
